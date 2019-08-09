@@ -15,4 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/christroutner/hd-tools.git"
   },
+  "dependencies": {
+    "shelljs": "^0.8.3"
+  }
 }
