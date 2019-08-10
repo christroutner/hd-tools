@@ -39,7 +39,9 @@ class Blockbook {
       shell.exec(`docker-compose up -d`)
       console.log(`Docker container started.`)
 
-      // Move the old data.
+      // Delete the old data.
+      shell.rm(`rm ../old-data/*.zip`)
+      console.log(`Deleted old data`)
 
     } catch(err) {
       console.log(`Error in blockbook.js/blockbook(): `, err);
