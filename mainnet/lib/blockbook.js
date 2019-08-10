@@ -12,10 +12,6 @@ const WORK_DIR = `/mnt/usb/indexers/blockbook/mainnet`
 class Blockbook {
   constructor() {}
 
-  hello() {
-    console.log(`hello world`)
-  }
-
   async backup() {
     try {
       // Enter to the working directory.

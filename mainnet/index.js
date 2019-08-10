@@ -3,16 +3,18 @@
 
 'use strict'
 
-const Blockbook = require('./lib/blockbook')
-const blockbook = new Blockbook()
-
 const Boilerplate = require('./lib/boilerplate')
 const boilerplate = new Boilerplate()
 
+const Blockbook = require('./lib/blockbook')
+const blockbook = new Blockbook()
+
 async function startBackup() {
   try {
-    //blockbook.backup()
-    boilerplate.backup()
+    //await boilerplate.backup()
+
+    await blockbook.backup()
+
   } catch(err) {
     console.log(`Error in startBackup(): `, err)
   }
