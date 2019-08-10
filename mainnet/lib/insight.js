@@ -1,15 +1,17 @@
 /*
-  This library controls the backup of Blockbook data and the handling of its
-  Docker container.
+  This library controls the backup of Insight v3 data and the handling of its
+  Docker container. This is the indexer used by rest.bitcoin.com.
 */
 
 'use strict'
 
 const shell = require("shelljs");
 
-const WORK_DIR = `/mnt/usb/indexers/blockbook/mainnet`
+const WORK_DIR = `/mnt/usb/indexers/insight/mainnet`
+const DOCKER_CONTAINER_NAME = `insight-mainnet`
+const COMPOSE_DIR = `insight-docker`
 
-class Blockbook {
+class Insight {
   constructor() {}
 
   async backup() {
@@ -18,8 +20,8 @@ class Blockbook {
       shell.cd(WORK_DIR)
 
       // Stop Docker container
-      shell.exec(`docker stop blockbook`)
-      console.log(`Blockbook Docker container stopped.`)
+      shell.exec(`docker stop ${DOCKER_CONTAINER_NAME}`)
+      console.log(`Insight Docker container stopped.`)
 
       // Wait 30 seconds for container to spin down.
       await this.sleep(15000)
@@ -30,12 +32,12 @@ class Blockbook {
 
       // Zip the data folder.
       console.log(`Zipping data...`)
-      shell.exec(`zip -r blockbook-mainnet-data.zip data/`)
+      shell.exec(`zip -r insight-mainnet-data.zip blockchain-data/`)
       console.log(`...Finished zipping data.`)
 
       // Restart the Docker container
       console.log(`Starting Docker container.`)
-      shell.cd(`docker-ubuntu-blockbook`)
+      shell.cd(`${COMPOSE_DIR}`)
       shell.exec(`docker-compose up -d`)
       console.log(`Docker container started.`)
 
@@ -44,7 +46,7 @@ class Blockbook {
       console.log(`Deleted old data`)
 
     } catch(err) {
-      console.log(`Error in blockbook.js/backup(): `, err);
+      console.log(`Error in insight.js/backup(): `, err);
     }
   }
 
@@ -53,4 +55,4 @@ class Blockbook {
   }
 }
 
-module.exports = Blockbook
+module.exports = Insight
