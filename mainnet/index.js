@@ -9,5 +9,12 @@ const blockbook = new Blockbook()
 const Boilerplate = require('./lib/boilerplate')
 const boilerplate = new Boilerplate()
 
-//blockbook.backup()
-boilerplate.backup()
+async function startBackup() {
+  try {
+    //blockbook.backup()
+    boilerplate.backup()
+  } catch(err) {
+    console.log(`Error in startBackup(): `, err)
+  }
+}
+startBackup()
