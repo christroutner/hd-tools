@@ -6,4 +6,8 @@
 const Blockbook = require('./lib/blockbook')
 const blockbook = new Blockbook()
 
-blockbook.backup()
+const Boilerplate = require('./lib/boilerplate')
+const boilerplate = new Boilerplate()
+
+//blockbook.backup()
+boilerplate.backup()

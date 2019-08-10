@@ -1,5 +1,5 @@
 /*
-  This library controls the backup of Blockbook data and the handling of its
+  This library controls the backup of Boilerplate data and the handling of its
   Docker container.
 */
 
@@ -7,9 +7,9 @@
 
 const shell = require("shelljs");
 
-const WORK_DIR = `/mnt/usb/indexers/blockbook/mainnet`
+const WORK_DIR = `/home/trout/work/personal/docker-boilerplate`
 
-class Blockbook {
+class Boilerplate {
   constructor() {}
 
   hello() {
@@ -22,11 +22,11 @@ class Blockbook {
       shell.cd(WORK_DIR)
 
       // Stop Docker container
-      shell.exec(`docker stop blockbook`)
-      console.log(`Blockbook Docker container stopped.`)
+      shell.exec(`docker stop docker-boilerplate`)
+      console.log(`Boilerplate Docker container stopped.`)
 
-      // Wait 30 seconds for container to spin down.
-      await this.sleep(15000)
+      // Wait for container to spin down.
+      await this.sleep(5000)
 
       // Move old data
       shell.mv(`*.zip`, `old-data/`)
@@ -34,19 +34,18 @@ class Blockbook {
 
       // Zip the data folder.
       console.log(`Zipping data...`)
-      shell.exec(`zip -r blockbook-data.zip data/`)
+      shell.exec(`zip -r boilerplate-data.zip data/`)
       console.log(`...Finished zipping data.`)
 
       // Restart the Docker container
       console.log(`Starting Docker container.`)
-      shell.cd(`docker-ubuntu-blockbook`)
       shell.exec(`docker-compose up -d`)
       console.log(`Docker container started.`)
 
       // Move the old data.
 
     } catch(err) {
-      console.log(`Error in blockbook.js/blockbook(): `, err);
+      console.log(`Error in boilerplate.js/backup(): `, err);
     }
   }
 
@@ -55,4 +54,4 @@ class Blockbook {
   }
 }
 
-module.exports = Blockbook
+module.exports = Boilerplate
