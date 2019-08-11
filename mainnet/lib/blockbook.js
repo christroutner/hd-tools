@@ -14,6 +14,8 @@ class Blockbook {
 
   async backup() {
     try {
+      console.log(`Starting blockbook.js/backup()`)
+
       // Enter to the working directory.
       shell.cd(WORK_DIR)
 
@@ -42,6 +44,8 @@ class Blockbook {
       // Delete the old data.
       shell.rm(`rm ../old-data/*.zip`)
       console.log(`Deleted old data`)
+
+      console.log(`Finished blockbook.js/backup()`)
 
     } catch(err) {
       console.log(`Error in blockbook.js/backup(): `, err);

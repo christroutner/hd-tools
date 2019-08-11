@@ -27,6 +27,8 @@ class Containers {
   // Stop all Docker containers
   async stop() {
     try {
+      console.log(`Starting mainnet-containers.js/stop()`)
+
       // Loop through each docker container.
       for(let i=0; i < composeDirs.length; i++) {
         const composeDir = composeDirs[i]
@@ -39,7 +41,7 @@ class Containers {
         console.log(`Stopped containers at ${composeDir}`)
 
         // Wait for container to spin down.
-        await this.sleep(10000)
+        await this.sleep(5000)
       }
 
       // Move old data
@@ -56,7 +58,7 @@ class Containers {
       shell.exec(`docker-compose up -d`)
       console.log(`Docker container started.`)
 
-      // Move the old data.
+      console.log(`Finished mainnet-containers.js/stop()`)
 
     } catch(err) {
       console.log(`Error in mainnet-containers.js/stop(): `, err);
@@ -66,6 +68,8 @@ class Containers {
   // Start all Docker containers.
   async start() {
     try {
+      console.log(`Starting mainnet-containers.js/start()`)
+
       // Loop through each docker container, in reverse order
       for(let i=composeDirs.length-1; i > -1 ; i--) {
         const composeDir = composeDirs[i]
@@ -80,6 +84,8 @@ class Containers {
         // Wait for container to spin up.
         await this.sleep(10000)
       }
+
+      console.log(`Finished mainnet-containers.js/start()`)
 
     } catch(err) {
       console.log(`Error in mainnet-containers.js/start(): `, err);

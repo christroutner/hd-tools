@@ -18,6 +18,8 @@ class Boilerplate {
 
   async backup() {
     try {
+      console.log(`Starting boilerplate.js/backup()`)
+
       // Enter to the working directory.
       shell.cd(WORK_DIR)
 
@@ -43,6 +45,8 @@ class Boilerplate {
       console.log(`Docker container started.`)
 
       // Move the old data.
+
+      console.log(`Finished boilerplate.js/backup()`)
 
     } catch(err) {
       console.log(`Error in boilerplate.js/backup(): `, err);
