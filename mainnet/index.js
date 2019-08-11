@@ -8,6 +8,9 @@
 const Boilerplate = require('./lib/boilerplate')
 const boilerplate = new Boilerplate()
 
+const Containers = require('./lib/mainnet-containers')
+const containers = new Containers()
+
 const Blockbook = require('./lib/blockbook')
 const blockbook = new Blockbook()
 
@@ -20,7 +23,13 @@ async function startBackup() {
 
     //await blockbook.backup()
 
+    console.log(`Stopping all Docker containers.`)
+    await containers.stop()
+
     await insight.backup()
+
+    await containers.start()
+    console.log(`All Docker containers started.`)
 
   } catch(err) {
     console.log(`Error in startBackup(): `, err)
