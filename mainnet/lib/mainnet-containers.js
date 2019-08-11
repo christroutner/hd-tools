@@ -44,20 +44,6 @@ class Containers {
         await this.sleep(5000)
       }
 
-      // Move old data
-      shell.mv(`*.zip`, `old-data/`)
-      console.log(`Old zip data moved.`)
-
-      // Zip the data folder.
-      console.log(`Zipping data...`)
-      shell.exec(`zip -r boilerplate-data.zip data/`)
-      console.log(`...Finished zipping data.`)
-
-      // Restart the Docker container
-      console.log(`Starting Docker container.`)
-      shell.exec(`docker-compose up -d`)
-      console.log(`Docker container started.`)
-
       console.log(`Finished mainnet-containers.js/stop()`)
 
     } catch(err) {
