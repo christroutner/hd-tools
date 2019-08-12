@@ -14,11 +14,11 @@ const shell = require("shelljs");
 const WORK_DIR = `/mnt/usb`
 
 const composeDirs = [
-  "/mnt/usb/indexers/slpdb/mainnet/docker-slpdb",
-  "/mnt/usb/indexers/blockbook/mainnet/docker-ubuntu-blockbook",
-  `/mnt/usb/indexers/insight/mainnet/insight-docker`,
-  `/mnt/usb/indexers/bitcore/mainnet/docker-bitcore-node`,
-  `/mnt/usb/full-nodes/mainnet/docker-abc`
+  "/mnt/usb/indexers/slpdb/testnet/docker-slpdb",
+  "/mnt/usb/indexers/blockbook/testnet/docker-ubuntu-blockbook",
+  `/mnt/usb/indexers/insight/testnet/insight-docker`,
+  `/mnt/usb/indexers/bitcore/testnet/docker-bitcore-node`,
+  `/mnt/usb/full-nodes/testnet/docker-abc`
 ]
 
 class Containers {
@@ -27,7 +27,7 @@ class Containers {
   // Stop all Docker containers
   async stop() {
     try {
-      console.log(`Starting mainnet-containers.js/stop()`)
+      console.log(`Starting testnet-containers.js/stop()`)
 
       // Loop through each docker container.
       for(let i=0; i < composeDirs.length; i++) {
@@ -44,17 +44,17 @@ class Containers {
         await this.sleep(5000)
       }
 
-      console.log(`Finished mainnet-containers.js/stop()`)
+      console.log(`Finished testnet-containers.js/stop()`)
 
     } catch(err) {
-      console.log(`Error in mainnet-containers.js/stop(): `, err);
+      console.log(`Error in testnet-containers.js/stop(): `, err);
     }
   }
 
   // Start all Docker containers.
   async start() {
     try {
-      console.log(`Starting mainnet-containers.js/start()`)
+      console.log(`Starting testnet-containers.js/start()`)
 
       // Loop through each docker container, in reverse order
       for(let i=composeDirs.length-1; i > -1 ; i--) {
@@ -71,10 +71,10 @@ class Containers {
         await this.sleep(10000)
       }
 
-      console.log(`Finished mainnet-containers.js/start()`)
+      console.log(`Finished testnet-containers.js/start()`)
 
     } catch(err) {
-      console.log(`Error in mainnet-containers.js/start(): `, err);
+      console.log(`Error in testnet-containers.js/start(): `, err);
     }
   }
 

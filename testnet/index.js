@@ -29,8 +29,8 @@ async function startBackup() {
     await insight.backup()
     console.log(`Finished backing up Insight API.`)
 
-    //await containers.start()
-    //console.log(`All Docker containers started.`)
+    await containers.start()
+    console.log(`All Docker containers started.`)
 
   } catch(err) {
     console.log(`Error in startBackup(): `, err)
