@@ -23,14 +23,14 @@ async function startBackup() {
 
     //await blockbook.backup()
 
-    //console.log(`Stopping all Docker containers.`)
-    //await containers.stop()
+    console.log(`Stopping all Docker containers.`)
+    await containers.stop()
 
-    //await insight.backup()
-    //console.log(`Finished backing up Insight API.`)
+    await insight.backup()
+    console.log(`Finished backing up Insight API.`)
 
-    await containers.start()
-    console.log(`All Docker containers started.`)
+    //await containers.start()
+    //console.log(`All Docker containers started.`)
 
   } catch(err) {
     console.log(`Error in startBackup(): `, err)

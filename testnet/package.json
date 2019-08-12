@@ -1,0 +1,21 @@
+{
+  "name": "hd-tools",
+  "version": "1.0.0",
+  "description": "Shell scripts for backing up blockchain data on the bchjs.cash harddrive.",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chris Troutner <chris.troutner@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christroutner/hd-tools.git"
+  },
+  "dependencies": {
+    "shelljs": "^0.8.3"
+  }
+}
