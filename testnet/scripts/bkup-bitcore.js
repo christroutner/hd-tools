@@ -4,7 +4,7 @@
 
 'use strict'
 
-const Containers = require('../lib/mainnet-containers')
+const Containers = require('../lib/testnet-containers')
 const containers = new Containers()
 
 const Bitcore = require('../lib/bitcore')

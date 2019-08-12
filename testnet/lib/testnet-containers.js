@@ -68,7 +68,7 @@ class Containers {
         console.log(`Started containers at ${composeDir}`)
 
         // Wait for container to spin up.
-        await this.sleep(10000)
+        await this.sleep(15000)
       }
 
       console.log(`Finished testnet-containers.js/start()`)

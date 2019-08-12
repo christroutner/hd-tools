@@ -7,8 +7,8 @@
 
 const shell = require("shelljs");
 
-const WORK_DIR = `/mnt/usb/indexers/bitcore/mainnet`
-const DOCKER_CONTAINER_NAME = `bitcore`
+const WORK_DIR = `/mnt/usb/indexers/bitcore/testnet`
+const DOCKER_CONTAINER_NAME = `bitcore-testnet`
 const COMPOSE_DIR = `docker-bitcore-node`
 
 class Bitcore {
@@ -27,7 +27,7 @@ class Bitcore {
 
       // Zip the data folder.
       console.log(`Zipping data...`)
-      shell.exec(`zip -r bitcore-mainnet-data.zip data/`)
+      shell.exec(`zip -r bitcore-testnet-data.zip data/`)
       console.log(`...Finished zipping data.`)
 
       // Delete the old data.
