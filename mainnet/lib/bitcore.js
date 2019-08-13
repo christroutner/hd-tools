@@ -27,7 +27,7 @@ class Bitcore {
 
       // Zip the data folder.
       console.log(`Zipping data...`)
-      //shell.exec(`zip -r bitcore-mainnet-data.zip data/`)
+      shell.exec(`zip -r bitcore-mainnet-data.zip data/`)
       console.log(`...Finished zipping data.`)
 
       // Delete the old data.
