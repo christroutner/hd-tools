@@ -21,6 +21,17 @@ const composeDirs = [
   `/mnt/usb/full-nodes/mainnet/docker-abc`
 ]
 
+const containerNames = [
+  `slpserve`,
+  `slpdb`,
+  `mongo-slpdb-testnet`,
+  `blockbook`,
+  `insight-mainnet`,
+  `bitcore`,
+  `mongo-bitcore`,
+  `bitcoind`
+]
+
 class Containers {
   constructor() {}
 
@@ -48,6 +59,31 @@ class Containers {
 
     } catch(err) {
       console.log(`Error in mainnet-containers.js/stop(): `, err);
+    }
+  }
+
+  // Stop all Docker containers
+  async stop2() {
+    try {
+      console.log(`Starting mainnet-containers.js/stop2()`)
+
+      // Loop through each docker container.
+      for(let i=0; i < containerNames.length; i++) {
+        const containerName = containerNames[i]
+
+        // Stop Docker container
+        shell.exec(`docker stop ${containerName}`)
+        shell.exec(`docker rm ${containerName}`)
+        console.log(`Stopped ${containerName}`)
+
+        // Wait for container to spin down.
+        await this.sleep(3000)
+      }
+
+      console.log(`Finished mainnet-containers.js/stop2()`)
+
+    } catch(err) {
+      console.log(`Error in mainnet-containers.js/stop2(): `, err);
     }
   }
 

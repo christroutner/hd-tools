@@ -13,7 +13,7 @@ const bitcore = new Bitcore()
 async function startBackup() {
   try {
     console.log(`Stopping all Docker containers.`)
-    await containers.stop()
+    await containers.stop2()
 
     await bitcore.backup()
     console.log(`Finished backing up Bitcore Node API.`)
