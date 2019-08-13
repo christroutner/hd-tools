@@ -18,8 +18,8 @@ async function startBackup() {
     await bitcore.backup()
     console.log(`Finished backing up Bitcore Node API.`)
 
-    await containers.start()
-    console.log(`All Docker containers started.`)
+    //await containers.start()
+    //console.log(`All Docker containers started.`)
 
   } catch(err) {
     console.log(`Error in startBackup(): `, err)
