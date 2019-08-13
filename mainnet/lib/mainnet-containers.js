@@ -24,7 +24,7 @@ const composeDirs = [
 const containerNames = [
   `slpserve`,
   `slpdb`,
-  `mongo-slpdb-testnet`,
+  `mongo-slpdb`,
   `blockbook`,
   `insight-mainnet`,
   `bitcore`,
@@ -36,6 +36,7 @@ class Containers {
   constructor() {}
 
   // Stop all Docker containers
+  // This method of stopping containers will not work when executed by cron.
   async stop() {
     try {
       console.log(`Starting mainnet-containers.js/stop()`)
@@ -48,7 +49,7 @@ class Containers {
         shell.cd(composeDir)
 
         // Stop Docker container
-        shell.exec(`docker-compose down`)
+        shell.exec(`/usr/local/bin/docker-compose down`)
         console.log(`Stopped containers at ${composeDir}`)
 
         // Wait for container to spin down.
@@ -100,7 +101,7 @@ class Containers {
         shell.cd(composeDir)
 
         // Stop Docker container
-        shell.exec(`docker-compose up -d`)
+        shell.exec(`/usr/local/bin/docker-compose up -d`)
         console.log(`Started containers at ${composeDir}`)
 
         // Wait for container to spin up.
