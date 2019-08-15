@@ -1,22 +1,19 @@
 /*
-  This library controls the backup of Insight v3 data and the handling of its
-  Docker container. This is the indexer used by rest.bitcoin.com.
+  This library controls the backup of slpdb data.
 */
 
 'use strict'
 
 const shell = require("shelljs");
 
-const WORK_DIR = `/mnt/usb/indexers/insight/mainnet`
-const DOCKER_CONTAINER_NAME = `insight-mainnet`
-const COMPOSE_DIR = `insight-docker`
+const WORK_DIR = `/mnt/usb/indexers/slpdb/mainnet`
 
-class Insight {
+class Slpdb {
   constructor() {}
 
   async backup() {
     try {
-      console.log(`Starting insight.js/backup()`)
+      console.log(`Starting slpdb.js/backup()`)
 
       // Enter to the working directory.
       shell.cd(WORK_DIR)
@@ -27,17 +24,17 @@ class Insight {
 
       // Zip the data folder.
       console.log(`Zipping data...`)
-      shell.exec(`zip -r insight-mainnet-data.zip blockchain-data/`)
+      shell.exec(`zip -r slpdb-mainnet-data.zip data/`)
       console.log(`...Finished zipping data.`)
 
       // Delete the old data.
       shell.rm(`rm ./old-data/*.zip`)
       console.log(`Deleted old data`)
 
-      console.log(`Finished insight.js/backup()`)
+      console.log(`Finished slpdb.js/backup()`)
 
     } catch(err) {
-      console.log(`Error in insight.js/backup(): `, err);
+      console.log(`Error in slpdb.js/backup(): `, err);
     }
   }
 
@@ -46,4 +43,4 @@ class Insight {
   }
 }
 
-module.exports = Insight
+module.exports = Slpdb
