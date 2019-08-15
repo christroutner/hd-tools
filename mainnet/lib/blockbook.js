@@ -29,7 +29,7 @@ class Blockbook {
       console.log(`...Finished zipping data.`)
 
       // Delete the old data.
-      shell.rm(`rm ../old-data/*.zip`)
+      shell.rm(`rm ./old-data/*.zip`)
       console.log(`Deleted old data`)
 
       console.log(`Finished blockbook.js/backup()`)
