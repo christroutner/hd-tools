@@ -24,7 +24,7 @@ class ABC {
 
       // Zip the data folder.
       console.log(`Zipping data...`)
-      //shell.exec(`zip -r abc-full-node-mainnet-data.zip blockchain-data/`)
+      shell.exec(`zip -r abc-full-node-mainnet-data.zip blockchain-data/`)
       console.log(`...Finished zipping data.`)
 
       // Delete the old data.
