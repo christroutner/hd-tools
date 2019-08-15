@@ -25,11 +25,11 @@ class Blockbook {
 
       // Zip the data folder.
       console.log(`Zipping data...`)
-      //shell.exec(`zip -r blockbook-mainnet-data.zip data/`)
+      shell.exec(`zip -r blockbook-mainnet-data.zip data/`)
       console.log(`...Finished zipping data.`)
 
       // Delete the old data.
-      //shell.rm(`rm ../old-data/*.zip`)
+      shell.rm(`rm ../old-data/*.zip`)
       console.log(`Deleted old data`)
 
       console.log(`Finished blockbook.js/backup()`)
