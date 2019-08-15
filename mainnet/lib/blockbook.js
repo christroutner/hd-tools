@@ -19,30 +19,17 @@ class Blockbook {
       // Enter to the working directory.
       shell.cd(WORK_DIR)
 
-      // Stop Docker container
-      shell.exec(`docker stop blockbook`)
-      console.log(`Blockbook Docker container stopped.`)
-
-      // Wait 30 seconds for container to spin down.
-      await this.sleep(15000)
-
       // Move old data
       shell.mv(`*.zip`, `old-data/`)
       console.log(`Old zip data moved.`)
 
       // Zip the data folder.
       console.log(`Zipping data...`)
-      shell.exec(`zip -r blockbook-mainnet-data.zip data/`)
+      //shell.exec(`zip -r blockbook-mainnet-data.zip data/`)
       console.log(`...Finished zipping data.`)
 
-      // Restart the Docker container
-      console.log(`Starting Docker container.`)
-      shell.cd(`docker-ubuntu-blockbook`)
-      shell.exec(`docker-compose up -d`)
-      console.log(`Docker container started.`)
-
       // Delete the old data.
-      shell.rm(`rm ../old-data/*.zip`)
+      //shell.rm(`rm ../old-data/*.zip`)
       console.log(`Deleted old data`)
 
       console.log(`Finished blockbook.js/backup()`)
