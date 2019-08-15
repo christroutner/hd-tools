@@ -15,7 +15,7 @@ async function startBackup() {
     console.log(`Stopping all Docker containers: ${timestamp()}`)
     await containers.stop()
 
-    await bitcore.backup()
+    await blockbook.backup()
     console.log(`Finished backing up Bitcore Node API: ${timestamp()}`)
 
     await containers.start()
