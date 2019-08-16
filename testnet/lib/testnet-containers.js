@@ -1,7 +1,7 @@
 /*
   This library controls taking down and bring up all the docker containers.
 
-  This library focuses on the mainnet server.
+  This library focuses on the testnet server.
 
   The zip of data on the server tends to hang on the really big indexers like
   insight and bitcore. It's better to take everything down.
@@ -37,7 +37,7 @@ class Containers {
         shell.cd(composeDir)
 
         // Stop Docker container
-        shell.exec(`docker-compose down`)
+        shell.exec(`/usr/local/bin/docker-compose down`)
         console.log(`Stopped containers at ${composeDir}`)
 
         // Wait for container to spin down.
@@ -64,7 +64,7 @@ class Containers {
         shell.cd(composeDir)
 
         // Stop Docker container
-        shell.exec(`docker-compose up -d`)
+        shell.exec(`/usr/local/bin/docker-compose up -d`)
         console.log(`Started containers at ${composeDir}`)
 
         // Wait for container to spin up.
