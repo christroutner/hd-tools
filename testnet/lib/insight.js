@@ -7,9 +7,7 @@
 
 const shell = require("shelljs");
 
-const WORK_DIR = `/mnt/usb/indexers/insight/mainnet`
-const DOCKER_CONTAINER_NAME = `insight-mainnet`
-const COMPOSE_DIR = `insight-docker`
+const WORK_DIR = `/mnt/usb/indexers/insight/testnet`
 
 class Insight {
   constructor() {}
@@ -27,7 +25,7 @@ class Insight {
 
       // Zip the data folder.
       console.log(`Zipping data...`)
-      shell.exec(`zip -r insight-mainnet-data.zip blockchain-data/`)
+      shell.exec(`zip -r insight-testnet-data.zip blockchain-data/`)
       console.log(`...Finished zipping data.`)
 
       // Delete the old data.

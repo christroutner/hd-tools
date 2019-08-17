@@ -1,20 +1,19 @@
 /*
-  This library controls the backup of Blockbook data and the handling of its
-  Docker container.
+  This library controls the backup of ABC full node data.
 */
 
 'use strict'
 
 const shell = require("shelljs");
 
-const WORK_DIR = `/mnt/usb/indexers/blockbook/testnet`
+const WORK_DIR = `/mnt/usb/full-nodes/testnet`
 
-class Blockbook {
+class ABC {
   constructor() {}
 
   async backup() {
     try {
-      console.log(`Starting blockbook.js/backup()`)
+      console.log(`Starting abc-full-node.js/backup()`)
 
       // Enter to the working directory.
       shell.cd(WORK_DIR)
@@ -25,17 +24,17 @@ class Blockbook {
 
       // Zip the data folder.
       console.log(`Zipping data...`)
-      shell.exec(`zip -r blockbook-testnet-data.zip data/`)
+      shell.exec(`zip -r abc-full-node-testnet-data.zip abc-testnet/`)
       console.log(`...Finished zipping data.`)
 
       // Delete the old data.
-      shell.rm(`rm ../old-data/*.zip`)
+      shell.rm(`rm ./old-data/*.zip`)
       console.log(`Deleted old data`)
 
-      console.log(`Finished blockbook.js/backup()`)
+      console.log(`Finished abc-full-node.js/backup()`)
 
     } catch(err) {
-      console.log(`Error in blockbook.js/backup(): `, err);
+      console.log(`Error in abc-full-node.js/backup(): `, err);
     }
   }
 
@@ -44,4 +43,4 @@ class Blockbook {
   }
 }
 
-module.exports = Blockbook
+module.exports = ABC
