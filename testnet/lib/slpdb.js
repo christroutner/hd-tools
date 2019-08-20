@@ -6,7 +6,7 @@
 
 const shell = require("shelljs");
 
-const WORK_DIR = `/mnt/usb/indexers/slpdb/mainnet`
+const WORK_DIR = `/mnt/usb/indexers/slpdb/testnet`
 
 class Slpdb {
   constructor() {}
@@ -24,7 +24,7 @@ class Slpdb {
 
       // Zip the data folder.
       console.log(`Zipping data...`)
-      shell.exec(`zip -r slpdb-mainnet-data.zip data/`)
+      shell.exec(`zip -r slpdb-testnet-data.zip data/`)
       console.log(`...Finished zipping data.`)
 
       // Delete the old data.
