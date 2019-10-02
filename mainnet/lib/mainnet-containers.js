@@ -17,7 +17,7 @@ const composeDirs = [
   "/mnt/usb/indexers/slpdb/mainnet/docker-slpdb",
   "/mnt/usb/indexers/blockbook/mainnet/docker-ubuntu-blockbook",
   `/mnt/usb/indexers/insight/mainnet/insight-docker`,
-  `/mnt/usb/indexers/bitcore/mainnet/docker-bitcore-node`,
+//  `/mnt/usb/indexers/bitcore/mainnet/docker-bitcore-node`,
   `/mnt/usb/full-nodes/mainnet/docker-abc`
 ]
 
